@@ -1,0 +1,6 @@
+content	isearch	chrome/
+locale	isearch	zh-CN	chrome/locale/zh-CN/
+skin	isearch	original/0.0.1	chrome/skin/original/
+
+overlay	chrome://browser/content/browser.xul	chrome://isearch/content/overlay.xul
+style	chrome://global/content/customizeToolbar.xul  chrome://isearch/content/skin/original/overlay.css

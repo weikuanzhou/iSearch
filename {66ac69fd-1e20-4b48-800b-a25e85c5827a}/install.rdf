@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+    xmlns:NC="http://home.netscape.com/NC-rdf#"
+    xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <RDF:Description RDF:about="urn:mozilla:install-manifest"
+        em:id="{66ac69fd-1e20-4b48-800b-a25e85c5827a}"
+        em:name="Interactive Search"
+        em:version="0.0.5"
+        em:creator="Zhou Weikuan"
+        em:description="Integrate Google Yahoo into autocomplete popup list"
+        em:iconURL="chrome://isearch/skin/icon.png" >
+
+        <!-- optional items -->
+        <em:contributor>Firefox</em:contributor>
+        <em:contributor>isearch.mozdev.com</em:contributor>
+        <em:homepageURL>wacuum.ycool.com</em:homepageURL>
+        <em:targetApplication RDF:resource="rdf:#$AlXOo2"/>
+
+    </RDF:Description>
+
+    <!-- Firefox -->
+    <RDF:Description RDF:about="rdf:#$AlXOo2"
+        em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+        em:minVersion="3.0b5"
+        em:maxVersion="3.0.*" />
+
+</RDF:RDF>

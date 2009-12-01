@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://isearch/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://isearch/locale/overlay.dtd">
+<overlay id="isearch_overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/javascript;version=1.7" 
+        src="chrome://isearch/content/isearch.js" />
+    <script type="application/javascript;version=1.7" 
+        src="chrome://isearch/content/iSearchController.js" />
+    <script type="application/javascript;version=1.7" 
+        src="chrome://isearch/content/overlay.js" />
+
+    <menupopup id="menu_ToolsPopup">
+        <menuitem id="isearch_test" label="&isearch-test;" 
+            insertafter="devToolSeparator"
+            oncommand="iSearch.onMenuItemCommand(event);"/>
+    </menupopup>
+</overlay>
+

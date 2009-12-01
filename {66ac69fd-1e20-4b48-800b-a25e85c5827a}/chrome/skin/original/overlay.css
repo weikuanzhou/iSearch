@@ -1,0 +1,11 @@
+/* This is just an example. You shouldn't do this. */
+menuitem#isearch_test {
+  color: red !important;
+}
+
+/* Add background color for list items */
+richlistitem[type ~= 'Google'] > hbox {background-color:#FEE0CA;}
+richlistitem[type ~= 'Yahoo'] > hbox {background-color:#D5DDF3;}
+richlistitem[type ~= 'Google'][selected='true'] > hbox {background-color: transparent;}
+richlistitem[type ~= 'Yahoo'][selected='true'] > hbox {background-color: transparent;}
+
