@@ -1,0 +1,93 @@
+<?xml version="1.0"?> <!-- -*- Mode: xml; indent-tabs-mode: nil; -*- -->
+
+
+<?xml-stylesheet href="chrome://browser/content/places/places.css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://browser/skin/places/places.css"?>
+
+<?xul-overlay href="chrome://global/content/editMenuOverlay.xul"?>
+<?xul-overlay href="chrome://browser/content/places/placesOverlay.xul"?>
+
+<!DOCTYPE page [
+<!ENTITY % historyDTD SYSTEM "chrome://browser/locale/history/history.dtd">
+%historyDTD;
+<!ENTITY % placesDTD SYSTEM "chrome://browser/locale/places/places.dtd">
+%placesDTD;
+]>
+
+<!-- we need to keep id="history-panel" for upgrade and switching
+     between versions of the browser -->
+
+<page id="history-panel" orient="vertical"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      onload="HistorySidebarInit();"
+      onunload="SidebarUtils.clearURLFromStatusBar();">
+
+  <script type="application/x-javascript" 
+          src="chrome://browser/content/bookmarks/sidebarUtils.js"/>
+  <script type="application/x-javascript" 
+          src="chrome://browser/content/places/history-panel.js"/>
+
+  <commandset id="editMenuCommands"/>
+  <commandset id="placesCommands"/>
+
+  <keyset id="editMenuKeys">
+  </keyset>
+
+  <popup id="placesContext">
+    <menuitem id="addBookmarkContextItem"
+              label="&bookmarkLink.label;"
+              accesskey="&bookmarkLink.accesskey;"
+              selection="link"
+              selectiontype="single"
+              oncommand="historyAddBookmarks();"/>
+  </popup>
+
+  <hbox align="center">
+    <label value="&find.label;" accesskey="&find.accesskey;" 
+           control="search-box"/>
+    <textbox id="search-box" flex="1" type="search" class="compact"
+             aria-controls="historyTree"
+             oncommand="searchHistory(this.value);"/>
+    <button id="viewButton" style="min-width:0px !important;" type="menu"
+            label="&view.label;" accesskey="&view.accesskey;" selectedsort="day"
+            persist="selectedsort">
+      <menupopup>
+        <menuitem id="bydayandsite" label="&byDayAndSite.label;" 
+                  accesskey="&byDayAndSite.accesskey;" type="radio"
+                  oncommand="this.parentNode.parentNode.setAttribute('selectedsort', 'dayandsite'); GroupBy('dayandsite');"/>
+        <menuitem id="bysite" label="&bySite.label;"  
+                  accesskey="&bySite.accesskey;" type="radio"
+                  oncommand="this.parentNode.parentNode.setAttribute('selectedsort', 'site'); GroupBy('site');"/>
+        <menuitem id="byday" label="&byDate.label;" 
+                  accesskey="&byDate.accesskey;"
+                  type="radio"
+                  oncommand="this.parentNode.parentNode.setAttribute('selectedsort', 'day'); GroupBy('day');"/>
+        <menuitem id="byvisited" label="&byMostVisited.label;" 
+                  accesskey="&byMostVisited.accesskey;"
+                  type="radio"
+                  oncommand="this.parentNode.parentNode.setAttribute('selectedsort', 'visited'); GroupBy('visited');"/>
+        <menuitem id="bylastvisited" label="&byLastVisited.label;" 
+                  accesskey="&byLastVisited.accesskey;"
+                  type="radio"
+                  oncommand="this.parentNode.parentNode.setAttribute('selectedsort', 'lastvisited'); GroupBy('lastvisited');"/>
+      </menupopup>
+    </button>
+  </hbox>
+
+  <tree id="historyTree"
+        class="sidebar-placesTree"
+        flex="1"
+        type="places"
+        context="placesContext"
+        hidecolumnpicker="true"
+        onkeypress="SidebarUtils.handleTreeKeyPress(event);"
+        onclick="SidebarUtils.handleTreeClick(this, event, true);"
+        onmousemove="SidebarUtils.handleTreeMouseMove(event);"
+        onmouseout="SidebarUtils.clearURLFromStatusBar();">
+    <treecols>
+      <treecol id="title" flex="1" primary="true" hideheader="true"/>
+    </treecols>
+    <treechildren class="sidebar-placesTreechildren" flex="1"/>
+  </tree>
+</page>

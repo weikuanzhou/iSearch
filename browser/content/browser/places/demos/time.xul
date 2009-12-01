@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://browser/content/places/demos/time.css"?>
+
+<window
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+
+  <script type="application/x-javascript"
+          src="chrome://browser/content/places/demos/time.js"/>
+
+<hbox>
+<vbox id="daylist" style="border-right:1px solid black;">
+</vbox>
+
+
+<browser id="theframe" width="700" height="900" src="chrome://browser/content/places/demos/time.html" onload="BW_loadiframe();">
+</browser>
+</hbox>
+
+</window>

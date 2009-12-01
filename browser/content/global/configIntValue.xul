@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/config.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://global/locale/config.dtd">
+
+<dialog id="intValueDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+        ondialogaccept="return onIntValueDialogOK();"
+        ondialogcancel="return onIntValueDialogCancel();"
+        onload="onIntValueDialogLoad();"
+        buttonpack="center"
+        style="min-width: 29em; min-height: 10em;">
+
+<script type="application/x-javascript">
+  <![CDATA[
+    var gIntValueDialogParams;
+    function onIntValueDialogLoad()
+    {
+      gIntValueDialogParams = window.arguments[0];
+      document.title = gIntValueDialogParams.windowTitle;
+      var label = document.getElementById("label");
+      label.value = gIntValueDialogParams.label;
+      var textbox = document.getElementById("textbox");
+      textbox.value = gIntValueDialogParams.value;
+      validateIntValue();
+    }
+    
+    function onIntValueDialogOK()
+    {
+      // XXX Validate one more time because there are ways to change
+      // the text that does not trigger 'oninput' such as drag-n-drop
+      // (bug 128066) and autocomplete (bug 320462).
+      if (!validateIntValue())
+        return false;
+      gIntValueDialogParams.cancelled = false;
+      return true;
+    }
+    
+    function onIntValueDialogCancel()
+    {
+      gIntValueDialogParams.cancelled = true;
+      return true;
+    }
+    
+    function validateIntValue()
+    {
+      // We intentionally don't want to support octal/hex numbers here (bug 63117).
+      var value = document.getElementById("textbox").value;
+      var intValue = parseInt(value, 10);
+      var valid = !isNaN(value) && value == intValue.toString() && (value | 0) == intValue;
+      if (valid)
+        gIntValueDialogParams.value = intValue;
+      var okButton = document.documentElement.getButton("accept");
+      okButton.disabled = !valid;
+      return valid;
+    }
+  ]]>
+</script>
+
+
+  <hbox flex="1">
+    <hbox align="start"><image class="spaced question-icon"/></hbox>
+    <vbox flex="1">
+      <description/> <!-- dummy to get the same spacing as string value prompt -->
+      <label id="label" control="textbox"/>
+      <label value=""/> <!-- dummy to get the same spacing as string value prompt -->
+      <textbox id="textbox" oninput="validateIntValue()"/>
+    </vbox>
+  </hbox>
+</dialog>

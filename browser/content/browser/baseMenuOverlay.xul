@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE overlay [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd">
+%brandDTD;
+<!ENTITY % baseMenuOverlayDTD SYSTEM "chrome://browser/locale/baseMenuOverlay.dtd">
+%baseMenuOverlayDTD;
+]>
+<overlay id="baseMenuOverlay"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://browser/content/utilityOverlay.js"/>
+
+
+    <menu id="helpMenu"
+          label="&helpMenu.label;"
+          accesskey="&helpMenu.accesskey;">
+      <menupopup id="menu_HelpPopup" onpopupshowing="buildHelpMenu();">
+        <menuitem id="menu_openHelp"
+                  oncommand="openHelpLink('firefox-help')"
+                  label="&helpContents.label;"
+                  accesskey="&helpContents.accesskey;"
+                  key="key_openHelp"/>
+        <menuitem id="releaseNotes"
+                  accesskey="&helpReleaseNotes.accesskey;"
+                  label="&helpReleaseNotes.label;"
+                  oncommand="openReleaseNotes()"
+                  onclick="checkForMiddleClick(this, event);"/>
+        <menuseparator id="updateSeparator"/>
+        <menuitem id="checkForUpdates"
+                  accesskey="&updateCmd.accesskey;"
+                  label="&updateCmd.label;"
+                  class="menuitem-iconic"
+                  oncommand="checkForUpdates();"/>
+        <menuseparator id="aboutSeparator"/>
+        <menuitem id="aboutName"
+                  accesskey="&aboutCmd.accesskey;"
+                  label="&aboutCmd.label;"
+                  oncommand="openAboutDialog();"/>
+      </menupopup>
+    </menu>
+
+    <keyset id="baseMenuKeyset">
+        <key id="key_openHelp"
+            oncommand="openHelpLink('firefox-f1');"
+            keycode="&openHelp.commandkey;"/>
+    </keyset>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="bundle_browser" src="chrome://browser/locale/browser.properties"/>
+        <stringbundle id="bundle_browser_region" src="chrome://browser-region/locale/region.properties"/>
+    </stringbundleset>
+</overlay>
