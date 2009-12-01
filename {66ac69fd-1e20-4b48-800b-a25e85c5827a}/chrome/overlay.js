@@ -1,4 +1,4 @@
-Components.utils.import("resource://gre/modules/JSON.jsm");
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 
 var iSearch = {
     onLoad: function() {

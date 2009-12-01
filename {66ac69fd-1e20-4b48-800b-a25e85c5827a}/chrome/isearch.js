@@ -1,4 +1,5 @@
-Components.utils.import("resource://gre/modules/JSON.jsm");
+Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
+// Components.utils.import("resource://gre/modules/JSON.jsm");
 
 const CLASS_ID = Components.ID("6124daa1-71a2-4d1a-ad90-01ca1c08e323");
 const CLASS_NAME = "ISearch, interactive search for url bar";
@@ -128,7 +129,8 @@ parseGoogle.prototype = {
         this._results = new ISearchResult(this._searchString, 
                 STATUS_COMPLETE_MATCH, 0, "");
         try {
-            data = JSON.fromString(str);
+            var JSON = Components.classes["@mozilla.org/dom/json;1"].createInstance(Ci.nsIJSON);
+            data = JSON.decode(str);
         } catch (e) {
             return;
         }
@@ -166,7 +168,8 @@ parseYahoo.prototype = {
     _iSearch: null,
 
     fakeUrl: function(str){
-        return 'http://search.yahoo.com/search?p=title%3A"' + str + '"';
+        // return 'http://search.yahoo.com/search?p=' + str + '&toggle=1&cop=mss&ei=UTF-8';
+        return 'http://www.bing.com/search?q=' + str;
     },
     startSearch: function(url){
         url.replace(" ", "+");
@@ -185,15 +188,16 @@ parseYahoo.prototype = {
         this._pr.abort();
     },
     onOK: function(){
+        Log(this._pr.responseText);
         this.parseOut(this._pr.responseText);
         this._iSearch.onSearchResult(this, this._results);
     },
     onError: function(){
     },
     parseOut: function(str){
-        var re = new RegExp('<div>.*?<h3>(.+?)</h3>.*?</div>', "g");
-        var url_re = new RegExp('(https*%3a.+?)"');
-        var host = new RegExp("(https*://.+?)/");
+        var re = new RegExp('<div class="sb_tlst"><h3>(.+?)</h3>.*?</cite>', "g");
+        var url_re = new RegExp('<cite>(.*?)</cite>');
+        var host = new RegExp("(https*://)?(.+?)/?");
         var mat, txt;
         this._results = new ISearchResult(this._searchString, 
                 STATUS_COMPLETE_MATCH, 0, "");
@@ -213,9 +217,9 @@ parseYahoo.prototype = {
             mat = host.exec(txt);
             if( null == mat ){
                 mat = [null];
-                mat[1] = txt;
+                mat[2] = txt;
             }
-            o.image = mat[1] + "/favicon.ico";
+            o.image = mat[2] + "/favicon.ico";
             o.style = 'suggesthint Yahoo isearch';
             this._results._results.push(o);
         }

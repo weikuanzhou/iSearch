@@ -918,6 +918,8 @@ ISearchController.prototype = {
         }
         else if ("treecolAutoCompleteComment"==colID){
             retVal = this.getCommentAt(row);
+        } else {
+            retVal = "Who Calls me here?";
         }
 
         return retVal;

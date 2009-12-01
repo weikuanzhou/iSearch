@@ -11,10 +11,10 @@
     <script type="application/javascript;version=1.7" 
         src="chrome://isearch/content/overlay.js" />
 
-    <menupopup id="menu_ToolsPopup">
+    <!-- menupopup id="menu_ToolsPopup">
         <menuitem id="isearch_test" label="&isearch-test;" 
             insertafter="devToolSeparator"
             oncommand="iSearch.onMenuItemCommand(event);"/>
-    </menupopup>
+    </menupopup -->
 </overlay>
 

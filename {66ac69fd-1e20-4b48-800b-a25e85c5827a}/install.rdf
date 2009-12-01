@@ -8,7 +8,7 @@
         em:name="Interactive Search"
         em:version="0.0.5"
         em:creator="Zhou Weikuan"
-        em:description="Integrate Google Yahoo into autocomplete popup list"
+        em:description="Integrate Google into autocomplete popup list"
         em:iconURL="chrome://isearch/skin/icon.png" >
 
         <!-- optional items -->
@@ -23,6 +23,6 @@
     <RDF:Description RDF:about="rdf:#$AlXOo2"
         em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
         em:minVersion="3.0b5"
-        em:maxVersion="3.0.*" />
+        em:maxVersion="3.5.*" />
 
 </RDF:RDF>
