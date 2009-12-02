@@ -3,10 +3,12 @@ Achieved:
 0.0.2 List 6 items from original bookmarks and page history, 6 items from search engines(yahoo now);
 0.0.3 Support results from Google and Yahoo.
 0.0.4 Improve the interaction, make it realtime.
+0.0.5 Rewrite IAutoCompleteController in javascript
 
 Current:
-0.0.5 
+0.0.6 Add supports for Microsoft bing, remove unrelated results from history
 
 Objectives:
-0.0.6 Add supports for Microsoft bing
-0.0.7 Make results order customizatable.
+0.0.7 option support
+0.0.8 Make results order customizatable.
+
