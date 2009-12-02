@@ -9,8 +9,8 @@ const MAXS = 20;
 
 const orderStr = "HGYHGYHGYHGYHGYHGYHGYHGYHGYHGYHGY"
 
-const htmlReplaceThese = new Array('&amp;','&quot;', '&#39;');
-const htmlReplaceWith = new Array('&','"', '\'');
+const htmlReplaceThese = new Array('&amp;','&quot;', '&#39;', '&gt;');
+const htmlReplaceWith = new Array('&','"', '\'', '>');
 
 const STATUS_NONE = 1;
 const STATUS_SEARCHING = 2;

@@ -141,11 +141,11 @@ ISearchController.prototype = {
         if(search ){
             this.mSearches.push(search);
         }
-        search = new parseGoogle(this);
+        search = new parseYahoo(this);
         if(search != null){
             this.mSearches.push(search);
         }
-        search = new parseYahoo(this);
+        search = new parseGoogle(this);
         if(search != null){
             this.mSearches.push(search);
         }
