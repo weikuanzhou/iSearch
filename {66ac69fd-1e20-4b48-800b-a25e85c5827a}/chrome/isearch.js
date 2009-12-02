@@ -103,6 +103,7 @@ parseGoogle.prototype = {
             + 'web?q=intitle%3A"' + str + '"+OR+inurl%3A"' + str + '"&v=1.0';
     },
     startSearch: function(url){
+        this._searchString = url;
         url.replace(" ", "+");
         url = this.fakeUrl(url);
         this._pr = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]
@@ -172,6 +173,7 @@ parseYahoo.prototype = {
         return 'http://www.bing.com/search?q=' + str;
     },
     startSearch: function(url){
+        this._searchString = url;
         url.replace(" ", "+");
         url = this.fakeUrl(url);
         this._pr = Cc["@mozilla.org/xmlextras/xmlhttprequest;1"]

@@ -448,6 +448,8 @@ ISearchController.prototype = {
 
     /* nsIAutocomplteObserver */
     onSearchResult: function(search, results){
+        if (results.searchString != this.searchString)
+            return;
         var count, i; 
         // hook here
         var idx = 0;
@@ -464,13 +466,17 @@ ISearchController.prototype = {
             this.mHolders[idx].comment  = results.getCommentAt(i);
             this.mHolders[idx].image    = results.getImageAt(i);
             this.mHolders[idx].style    = results.getStyleAt(i);
+            this.mHolders[idx].searchString    = results.searchString;
             this.mHolders[idx].id       = c;
         }
         this.mcResults = [];
         count = this.mHolders.length;
         for(i=0; i<count; i++){
             if(this.mHolders[i] == null)
+                continue; 
+            if (this.mHolders[i].searchString != this.searchString){
                 continue;
+            }
             this.mcResults.push(this.mHolders[i]);
         }
         /*
