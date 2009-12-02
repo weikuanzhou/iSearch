@@ -188,7 +188,6 @@ parseYahoo.prototype = {
         this._pr.abort();
     },
     onOK: function(){
-        Log(this._pr.responseText);
         this.parseOut(this._pr.responseText);
         this._iSearch.onSearchResult(this, this._results);
     },
@@ -197,7 +196,7 @@ parseYahoo.prototype = {
     parseOut: function(str){
         var re = new RegExp('<div class="sb_tlst"><h3>(.+?)</h3>.*?</cite>', "g");
         var url_re = new RegExp('<cite>(.*?)</cite>');
-        var host = new RegExp("(https*://)?(.+?)/?");
+        var host = new RegExp("(https*://)?([^/]+)/?");
         var mat, txt;
         this._results = new ISearchResult(this._searchString, 
                 STATUS_COMPLETE_MATCH, 0, "");
@@ -209,17 +208,22 @@ parseYahoo.prototype = {
                 o.title = o.title.replace(htmlReplaceThese[j], 
                             htmlReplaceWith[j], "g");
             }
-            mat = url_re.exec(mat[1]);
+
+            mat = url_re.exec(mat);
             if(mat == null) continue;
             txt = this.trimBlank(mat[1]);
             txt = txt.replace('%3a', ':', "g");
             o.url = txt;
+
             mat = host.exec(txt);
-            if( null == mat ){
-                mat = [null];
-                mat[2] = txt;
+            if (mat[2] != '') {
+                txt = mat[2];
             }
-            o.image = mat[2] + "/favicon.ico";
+            if (mat[1] == '') {
+                txt = "http://" + txt;
+            } 
+            o.image = "http://" + txt + "/favicon.ico";
+
             o.style = 'suggesthint Yahoo isearch';
             this._results._results.push(o);
         }
