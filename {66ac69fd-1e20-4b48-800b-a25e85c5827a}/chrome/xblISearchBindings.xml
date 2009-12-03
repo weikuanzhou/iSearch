@@ -11,14 +11,12 @@
     </resources>
 
     <content ignorekeys="true" level="top">
-      <xul:hbox>
       <xul:richlistbox anonid="richlistbox" class="autocomplete-richlistbox" flex="1"/>
       <xul:hbox>
         <children/>
       </xul:hbox>
       <!--xul:textbox value="dksfie" width="100%" > 
       </xul:textbox -->
-      </xul:hbox>
     </content>
 
     <implementation implements="nsIAutoCompletePopup">
