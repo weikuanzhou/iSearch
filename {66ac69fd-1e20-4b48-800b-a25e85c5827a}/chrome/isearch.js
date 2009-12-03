@@ -221,10 +221,11 @@ parseYahoo.prototype = {
             if (mat[2] != '') {
                 txt = mat[2];
             }
-            if (mat[1] == '') {
+            if (mat[1] === undefined ) {
                 txt = "http://" + txt;
+                o.url = "http://" + o.url;
             } 
-            o.image = "http://" + txt + "/favicon.ico";
+            o.image = txt + "/favicon.ico";
 
             o.style = 'suggesthint Yahoo isearch';
             this._results._results.push(o);

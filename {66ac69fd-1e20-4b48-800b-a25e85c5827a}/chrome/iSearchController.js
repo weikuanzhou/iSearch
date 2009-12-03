@@ -477,7 +477,17 @@ ISearchController.prototype = {
             if (this.mHolders[i].searchString != this.searchString){
                 continue;
             }
-            this.mcResults.push(this.mHolders[i]);
+            var j, add=true;
+            var len= this.mcResults.length;
+            for (j=0; j<len; ++j){
+                if (this.mcResults[j].value == this.mHolders[i].value){
+                    add = false;
+                    break;
+                }
+            }
+            if (add){
+                this.mcResults.push(this.mHolders[i]);
+            }
         }
         /*
         var s="";
