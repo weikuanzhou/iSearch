@@ -4,6 +4,10 @@
 <overlay id="isearch_overlay"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
+    <popupset id="mainPopupSet">
+        <panel id="PopupAutoCompleteRichResult" type="ISearchPanel" />
+    </popupset>
+
     <script type="application/javascript;version=1.7" 
         src="chrome://isearch/content/isearch.js" />
     <script type="application/javascript;version=1.7" 
@@ -11,11 +15,6 @@
     <script type="application/javascript;version=1.7" 
         src="chrome://isearch/content/overlay.js" />
 
-    <!-- panel id="PopupAutoCompleteRichResult" type="iSearch-richlistbox">
-        <vbox>
-        <textbox id="SEBrief" value="ehllow rold" />
-        </vbox>
-    </panel -->
     <!-- menupopup id="menu_ToolsPopup">
         <menuitem id="isearch_test" label="&isearch-test;" 
             insertafter="devToolSeparator"

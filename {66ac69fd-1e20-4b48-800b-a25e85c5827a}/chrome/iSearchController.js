@@ -87,15 +87,6 @@ function ISearchController (aInput){
 
     this.mInput = null;
     this.input = aInput;
-    /*
-    try {
-        var pop = this.input.popup;
-        Log(pop);
-        Log(pop.style.MozBinding);
-    } catch (e){
-        Log("Error: " + e);
-    }*/
-    // var ele = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
 }
 
 ISearchController.prototype = {

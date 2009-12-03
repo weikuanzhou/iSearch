@@ -9,3 +9,7 @@ richlistitem[type ~= 'Yahoo'] > hbox {background-color:#D5DDF3;}
 richlistitem[type ~= 'Google'][selected='true'] > hbox {background-color: transparent;}
 richlistitem[type ~= 'Yahoo'][selected='true'] > hbox {background-color: transparent;}
 
+#PopupAutoCompleteRichResult {
+  -moz-binding: url("chrome://isearch/content/xblISearchBindings.xml#isearch-popup");
+}
+
