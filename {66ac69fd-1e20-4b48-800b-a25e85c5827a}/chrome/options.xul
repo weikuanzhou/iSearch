@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://isearch/content/options.css" type="text/css" ?>
+
+<dialog id="iSearchOptions" class="dialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        buttons="accept, cancel"
+        onload="initOptions();"
+        ondialogaccept="saveOptions()"
+        title="Configure iSearch Options" > 
+    <script type="application/x-javascript" src="chrome://isearch/content/options.js" />
+    <box class="banner">
+        <description> Display enabled search engines and their orders </description>
+    </box>
+    <vbox>
+        <description> <html:strong>H </html:strong> History </description>
+        <description> <html:strong>G </html:strong> Google </description>
+        <description> <html:strong>Y </html:strong> Bing </description>
+        <hbox>
+            <label value="The order to use:" />
+            <textbox id="txtOrder" value="" size="32" />
+        </hbox>
+    </vbox>
+
+</dialog>

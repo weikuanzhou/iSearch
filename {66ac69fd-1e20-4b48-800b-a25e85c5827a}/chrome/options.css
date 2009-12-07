@@ -1,0 +1,15 @@
+.dialog {
+    background-color:#EEE;
+}
+
+.banner {
+    border:inset;
+    background:yellow;
+    color:red;
+    text:center;
+}
+
+vbox {
+    text:center;
+}
+
