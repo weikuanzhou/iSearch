@@ -14,8 +14,8 @@
     </box>
     <vbox>
         <description> <html:strong>H </html:strong> History </description>
-        <description> <html:strong>G </html:strong> Google </description>
-        <description> <html:strong>Y </html:strong> Bing </description>
+        <description> <html:strong>G </html:strong> Google  </description>
+        <description> <html:strong>Y </html:strong> MS Bing </description>
         <hbox>
             <label value="The order to use:" />
             <textbox id="txtOrder" value="" size="32" />
