@@ -5,11 +5,10 @@ Achieved:
 0.0.4 Improve the interaction, make it realtime.
 0.0.5 Rewrite IAutoCompleteController in javascript
 0.0.6 Add supports for Microsoft bing, remove unrelated results from history
-
-Current:
 0.0.7 Remove duplicated results from mutiple SEs
 
-Objectives:
-0.0.8 option support
-0.0.9 Make results order customizatable.
+Current:
+0.0.8 Options support and make results order customizatable.
 
+Objectives:
+0.0.9 update xbl file to support extra elements

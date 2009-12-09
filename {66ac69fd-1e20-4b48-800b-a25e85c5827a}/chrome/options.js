@@ -2,6 +2,9 @@ const browser = Components.classes["@mozilla.org/appshell/window-mediator;1"].ge
 
 function saveOptions(){
     var txtOrder = document.getElementById('txtOrder').value;
+    if ('' == txtOrder){
+        txtOrder = 'HGBHGBHGBHGBHGBHGBHGB';
+    }
     browser.Prefs.setCharPref(browser.prefISearchOrderString, txtOrder);
     browser.orderStr = txtOrder;
 }
