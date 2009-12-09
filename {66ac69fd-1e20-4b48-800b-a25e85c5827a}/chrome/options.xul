@@ -9,17 +9,21 @@
         ondialogaccept="saveOptions()"
         title="Configure iSearch Options" > 
     <script type="application/x-javascript" src="chrome://isearch/content/options.js" />
-    <box class="banner">
-        <description> Display enabled search engines and their orders </description>
-    </box>
+    <description class="banner"> Display enabled search engines and their orders </description>
     <vbox>
         <description> <html:strong>H </html:strong> History </description>
         <description> <html:strong>G </html:strong> Google  </description>
-        <description> <html:strong>Y </html:strong> MS Bing </description>
+        <description> <html:strong>B </html:strong> MS Bing </description>
         <hbox>
-            <label value="The order to use:" />
+            <description> The order to use: </description>
             <textbox id="txtOrder" value="" size="32" />
         </hbox>
+        <description class="explain"> 
+            Each item in the order to indicate a SE result,
+            for example HHGB means display two results from
+            history first, and followed by a result from Google,
+            ended with a result from Bing.
+        </description>
     </vbox>
 
 </dialog>

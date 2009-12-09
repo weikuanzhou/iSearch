@@ -1,13 +1,21 @@
 Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
 // Components.utils.import("resource://gre/modules/JSON.jsm");
 
+const Prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
+const consoleService = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);
+
 const CLASS_ID = Components.ID("6124daa1-71a2-4d1a-ad90-01ca1c08e323");
 const CLASS_NAME = "ISearch, interactive search for url bar";
 const CONTRACT_ID = "@mozilla.org/autocomplete/search;1?name=isearch";
 const STEP = 3;
 const MAXS = 20;
+const prefISearchOrderString = 'extensions.isearch.SEorder';
 
-const orderStr = "HGYHGYHGYHGYHGYHGYHGYHGYHGYHGYHGY"
+var orderStr = Prefs.getCharPref(prefISearchOrderString);
+if (orderStr == ''){
+    orderStr = "HGBHGBHGBHGBHGBHGBHGB";
+    Prefs.setCharPref(prefISearchOrderString, orderStr);
+}
 
 const htmlReplaceThese = new Array('&amp;','&quot;', '&#39;', '&gt;');
 const htmlReplaceWith = new Array('&','"', '\'', '>');
@@ -19,8 +27,6 @@ const STATUS_COMPLETE_MATCH = 4;
 const ACResult = Ci.nsIAutoCompleteResult;
 
 function Log(msg){
-    var consoleService = Cc["@mozilla.org/consoleservice;1"]
-                            .getService(Ci.nsIConsoleService);
     consoleService.logStringMessage(msg);
 }
 
@@ -158,12 +164,12 @@ parseGoogle.prototype = {
     },
 };
 
-function parseYahoo(isearch){
+function parseBing(isearch){
     this._iSearch   = isearch;
-    this._id = 'Y';
+    this._id = 'B';
 }
 
-parseYahoo.prototype = {
+parseBing.prototype = {
     _results: [],
     _pr: null,
     _iSearch: null,
@@ -227,7 +233,7 @@ parseYahoo.prototype = {
             } 
             o.image = txt + "/favicon.ico";
 
-            o.style = 'suggesthint Yahoo isearch';
+            o.style = 'suggesthint Bing isearch';
             this._results._results.push(o);
         }
     },

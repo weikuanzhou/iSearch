@@ -3,6 +3,7 @@
 }
 
 .banner {
+    left-padding: 20px;
     text-align:center;
     border:4px solid #98B1C1;
     font-weight:bold;
@@ -13,3 +14,7 @@ vbox {
     text-align:center;
 }
 
+.explain {
+    max-width:480px;
+    text-align:left;
+}
